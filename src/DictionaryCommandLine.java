@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 public class DictionaryCommandLine extends DictionaryManagement {
     public void showAllWord() {
         System.out.println("No    |English             |Vietnamese");
@@ -31,11 +29,5 @@ public class DictionaryCommandLine extends DictionaryManagement {
             }
         }
         System.out.println("Number of result: " + count);
-    }
-
-    public static void main(String[] args) throws IOException {
-        DictionaryCommandLine d = new DictionaryCommandLine();
-        d.insertFromFile();
-        d.dictionarySearcher();
     }
 }

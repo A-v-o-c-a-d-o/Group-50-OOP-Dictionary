@@ -6,16 +6,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Scanner;
 import edu.princeton.cs.algs4.In;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
 public class DictionaryManagement {
     Dictionary dictionary = new Dictionary();
     Scanner sc = new Scanner(System.in);
+    public static Connection connection;
+    public static Statement statement;
 
     public void insertFromCommandline() {
         System.out.print("Number of word to insert: ");
@@ -43,48 +45,78 @@ public class DictionaryManagement {
     }
 
     public static void UpdateDatabase(Word word) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
-        Statement statement = connection.createStatement();
-        String sql = "UPDATE av set description = '" + word.getWord_explain() + "' where word = '" + word.getWord_target() + "'";
-        statement.executeQuery(sql);
-        connection.close();
-        statement.close();
+        if (!DictionaryManagement.include(word.getWord_target()))
+            return;
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "UPDATE av set description = '" + word.getWord_explain() + "' where word = '" + word.getWord_target() + "'";
+            statement.executeUpdate(sql);
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void deleteInDatabase(Word word) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
-        Statement statement = connection.createStatement();
-        String sql = "DELETE FROM av where word = '" + word.getWord_target() + "'";
-        statement.executeQuery(sql);
-        connection.close();
-        statement.close();
+        if (!DictionaryManagement.include(word.getWord_target()))
+            return;
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "DELETE FROM av where word = '" + word.getWord_target() + "'";
+            statement.executeUpdate(sql);
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void insertToDatabase(Word word) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
-        Statement statement = connection.createStatement();
-        String sql = "INSERT INTO av (word, pronounce, description) values ('" +
-                    word.getWord_target() + "', '" + word.getWord_phonetics() + "', '" + word.getWord_explain() + "')";
-        statement.executeQuery(sql);
-        connection.close();
-        statement.close();
+        if (DictionaryManagement.include(word.getWord_target()))
+            return;
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        
+        try {
+            String sql = "INSERT INTO av (word, pronounce, description) values ('" +
+                        word.getWord_target() + "', '" + word.getWord_phonetics() + "', '" + word.getWord_explain() + "')";
+            statement.executeUpdate(sql);
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public static ObservableList<Word> searchFromDatabase(String wordToFind) throws SQLException {
-        ObservableList<Word> ans = FXCollections.observableArrayList();
+    public static List<Word> searchFromDatabase(String wordToFind) throws SQLException {
+        List<Word> ans = FXCollections.observableArrayList();
         
-        Connection connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
-        Statement statement = connection.createStatement();
-        String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY word";
-        ResultSet a = statement.executeQuery(sql);
-        
-        while(a.next()) {
-            ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(3)), a.getString(5)));
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+            
+            while(a.next()) {
+                if (a.getString(3) == null)
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(4)), a.getString(5)));
+                else
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(3)), a.getString(5)));
+            }
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        connection.close();
-        statement.close();
 
-        return ans;
+        if (!ans.isEmpty() && ans.get(0).getWord_target().indexOf(wordToFind) == 0)
+            return ans;
+        else
+            return ans.size() < 17 ? searchFromDatabase(wordToFind.substring(0, wordToFind.length()-2)) : ans;
     }
 
     private static String parseHTMLContent(String toString) {
@@ -95,6 +127,23 @@ public class DictionaryManagement {
             result = result.replaceAll("\n\n","\n");
         }
         return result;
+    }
+
+    public static boolean include(String wordTocheck) throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        boolean ans = false;
+        try {
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordTocheck + "%'" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+            ans = a.getInt(1) > 0;
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return ans;
     }
 
     public void removeFromCommandLine() {
