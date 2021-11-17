@@ -1,4 +1,7 @@
 import java.sql.SQLException;
+
+import DictionaryCMD.DictionaryManagement;
+import DictionaryCMD.Word;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -14,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         ListView<Word> l = new ListView<>();
         //DictionaryManagement.deleteFromBookmark(new Word("letuananh", "ten toi", "lta"));
-        DictionaryManagement.addToBookmark(new Word("letuananh", "ten toi", "lta"));
+        //DictionaryManagement.addToBookmark(new Word("letuananh", "ten toi", "lta"));
         l.getItems().addAll(DictionaryManagement.loadFromBookmark());
         //DictionaryManagement.insertToDatabase(new Word("letuananh", "ten toi", "lta"));
         //l.getItems().addAll(DictionaryManagement.searchFromDatabase("letuan"));

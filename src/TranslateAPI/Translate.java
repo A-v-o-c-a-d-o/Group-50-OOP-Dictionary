@@ -1,4 +1,4 @@
-package Controllers;
+package TranslateAPI;
 
 import com.darkprograms.speech.translator.GoogleTranslate;
 import javafx.event.ActionEvent;
