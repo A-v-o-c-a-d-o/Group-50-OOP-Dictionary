@@ -1,11 +1,16 @@
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import edu.princeton.cs.algs4.In;
@@ -143,6 +148,24 @@ public class DictionaryManagement {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return ans;
+    }
+
+    public static void addBookmark(Word word) throws IOException {
+        FileOutputStream fOutputStream = new FileOutputStream(new File("bookmark.txt"));
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fOutputStream);
+        objectOutputStream.writeObject(word);
+        objectOutputStream.close();
+        fOutputStream.close();
+    }
+
+    public static List<Word> loadBookmark() throws IOException, ClassNotFoundException {
+        List<Word> ans = new ArrayList<>();
+        FileInputStream fileInputStream = new FileInputStream(new File("bookmark.txt"));
+        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ans.add((Word) objectInputStream.readObject());
+        fileInputStream.close();
+        objectInputStream.close();
         return ans;
     }
 

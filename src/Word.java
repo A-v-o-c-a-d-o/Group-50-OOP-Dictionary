@@ -1,4 +1,6 @@
-public class Word implements Comparable<Word> {
+import java.io.Serializable;
+
+public class Word implements Comparable<Word>, Serializable {
     private String word_target, word_explain, word_phonetics;
 
     public String getWord_phonetics() {

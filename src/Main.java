@@ -13,11 +13,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         ListView<Word> l = new ListView<>();
+        DictionaryManagement.addBookmark(new Word("letuananh", "ten tao", "lta"));
         //DictionaryManagement.UpdateDatabase(new Word("letuananh", "ten tao", "lta"));
         //DictionaryManagement.insertToDatabase(new Word("letuananh", "ten toi", "lta"));
         //DictionaryManagement.deleteInDatabase("letuananh");
         //l.setItems(DictionaryManagement.searchFromDatabase("letuan"));
-        l.getItems().addAll(DictionaryManagement.searchFromDatabase("letu"));
+        l.getItems().addAll(DictionaryManagement.loadBookmark());
         Group root = new Group(l);
         primaryStage.setScene(new Scene(root, 500, 200));
         primaryStage.show();
