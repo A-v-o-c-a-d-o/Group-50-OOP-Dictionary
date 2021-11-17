@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Translate">
+<AnchorPane prefHeight="700.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TranslateAPI.Translate">
    <children>
       <Pane layoutX="58.0" layoutY="122.0" prefHeight="200.0" prefWidth="918.0">
          <children>
@@ -35,7 +35,7 @@
                      <children>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../DictionaryProject-master/DictionaryProject-master/src/main/resources/icons/great_britain.png" />
+                              <Image url="@../../lib/icons/great_britain.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" layoutX="60.0" prefHeight="60.0" prefWidth="140.0" text="English" textFill="WHITE">
@@ -49,7 +49,7 @@
                      <children>
                         <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../../../../DictionaryProject-master/DictionaryProject-master/src/main/resources/icons/vietnam.png" />
+                              <Image url="@../../lib/icons/vietnam.png" />
                            </image>
                         </ImageView>
                         <Label alignment="CENTER" layoutX="60.0" prefHeight="60.0" prefWidth="140.0" text="Vietnamese" textFill="WHITE">
@@ -61,7 +61,7 @@
                   </Pane>
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="444.0" layoutY="15.0" onMouseClicked="#swapEnVi" pickOnBounds="true" preserveRatio="true" styleClass="swapEnVn">
                      <image>
-                        <Image url="@../../../../../../DictionaryProject-master/DictionaryProject-master/src/main/resources/icons/doubleArrows.png" />
+                        <Image url="@../../lib/icons/doubleArrows.png" />
                      </image>
                      <rotationAxis>
                         <Point3D />

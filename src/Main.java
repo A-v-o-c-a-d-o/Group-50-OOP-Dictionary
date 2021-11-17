@@ -1,11 +1,8 @@
 import java.sql.SQLException;
-
-import DictionaryCMD.DictionaryManagement;
-import DictionaryCMD.Word;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,14 +12,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        ListView<Word> l = new ListView<>();
-        //DictionaryManagement.deleteFromBookmark(new Word("letuananh", "ten toi", "lta"));
-        //DictionaryManagement.addToBookmark(new Word("letuananh", "ten toi", "lta"));
-        l.getItems().addAll(DictionaryManagement.loadFromBookmark());
-        //DictionaryManagement.insertToDatabase(new Word("letuananh", "ten toi", "lta"));
-        //l.getItems().addAll(DictionaryManagement.searchFromDatabase("letuan"));
-        Group root = new Group(l);
-        primaryStage.setScene(new Scene(root, 500, 200));
-        primaryStage.show();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("./Home/Home.fxml"));
+            primaryStage.setScene(new Scene(root));
+            primaryStage.show();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
