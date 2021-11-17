@@ -1,16 +1,11 @@
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import edu.princeton.cs.algs4.In;
@@ -23,6 +18,7 @@ public class DictionaryManagement {
     Scanner sc = new Scanner(System.in);
     public static Connection connection;
     public static Statement statement;
+    static File bookmark = new File("./src/Bookmark/bookmark.txt");
 
     public void insertFromCommandline() {
         System.out.print("Number of word to insert: ");
@@ -50,7 +46,7 @@ public class DictionaryManagement {
     }
 
     public static void UpdateDatabase(Word word) throws SQLException {
-        if (!DictionaryManagement.include(word.getWord_target()))
+        if (!DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
@@ -65,7 +61,7 @@ public class DictionaryManagement {
     }
 
     public static void deleteInDatabase(Word word) throws SQLException {
-        if (!DictionaryManagement.include(word.getWord_target()))
+        if (!DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
@@ -80,7 +76,7 @@ public class DictionaryManagement {
     }
 
     public static void insertToDatabase(Word word) throws SQLException {
-        if (DictionaryManagement.include(word.getWord_target()))
+        if (DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
@@ -134,12 +130,12 @@ public class DictionaryManagement {
         return result;
     }
 
-    public static boolean include(String wordTocheck) throws SQLException {
+    public static boolean includeDB(String wordToCheck) throws SQLException {
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
         boolean ans = false;
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordTocheck + "%'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "%'" + " ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             ans = a.getInt(1) > 0;
             a.close();
@@ -151,21 +147,76 @@ public class DictionaryManagement {
         return ans;
     }
 
-    public static void addBookmark(Word word) throws IOException {
-        FileOutputStream fOutputStream = new FileOutputStream(new File("bookmark.txt"));
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fOutputStream);
-        objectOutputStream.writeObject(word);
-        objectOutputStream.close();
-        fOutputStream.close();
+    public static boolean includeBM(String wordToCheck) throws SQLException {
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        boolean ans = false;
+        try {
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "%'" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+            if (a.getInt(1) > 0)
+                ans = a.getInt(6) == 1;
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return ans;
     }
 
-    public static List<Word> loadBookmark() throws IOException, ClassNotFoundException {
-        List<Word> ans = new ArrayList<>();
-        FileInputStream fileInputStream = new FileInputStream(new File("bookmark.txt"));
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        ans.add((Word) objectInputStream.readObject());
-        fileInputStream.close();
-        objectInputStream.close();
+    public static void addToBookmark(Word word) throws IOException, SQLException {
+        if (DictionaryManagement.includeBM(word.getWord_target()))
+            return;
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "UPDATE av set bookmark = 1 where word = '" + word.getWord_target() + "'";
+            statement.executeUpdate(sql);
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void deleteFromBookmark(Word word) throws IOException, SQLException {
+        if (!DictionaryManagement.includeDB(word.getWord_target()))
+            return;
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "UPDATE av set bookmark = 0 where word = '" + word.getWord_target() + "'";
+            statement.executeUpdate(sql);
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static List<Word> loadFromBookmark() throws IOException, ClassNotFoundException, SQLException {
+        List<Word> ans = FXCollections.observableArrayList();
+        
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "SELECT * FROM av WHERE bookmark = 1" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+            
+            while(a.next()) {
+                if (a.getString(3) == null)
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(4)), a.getString(5)));
+                else
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(3)), a.getString(5)));
+            }
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         return ans;
     }
 

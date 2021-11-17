@@ -1,4 +1,0 @@
-name	ten
-age	tuoi
-mother	me
-pen	but
