@@ -155,7 +155,7 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         boolean ans = false;
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "%'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "'" + " ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             if (a.getInt(1) > 0)
                 ans = a.getInt(6) == 1;
