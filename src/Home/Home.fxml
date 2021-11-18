@@ -30,7 +30,7 @@
             </ImageView>
          </graphic>
       </ToggleButton>
-      <ToggleButton layoutX="8.0" layoutY="136.0" mnemonicParsing="false" onAction="#onActionGrammarBtn" prefHeight="50.0" prefWidth="50.0" styleClass="transparentBtn" toggleGroup="$homeGuiBtn" AnchorPane.bottomAnchor="125.0">
+      <ToggleButton layoutX="8.0" layoutY="136.0" mnemonicParsing="false" onAction="#onActionBookmarkBtn" prefHeight="50.0" prefWidth="50.0" styleClass="transparentBtn" toggleGroup="$homeGuiBtn" AnchorPane.bottomAnchor="125.0">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                <image>

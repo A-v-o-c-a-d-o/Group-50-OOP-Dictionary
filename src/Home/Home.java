@@ -17,9 +17,6 @@ public class Home implements Initializable {
         showComponent("/Search/Search.fxml");
     }
 
-    /**
-     * show component.
-     */
     private void showComponent(String path) {
         try {
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
@@ -43,8 +40,8 @@ public class Home implements Initializable {
         showComponent("/TranslateAPI/Translate.fxml");
     }
 
-    public void onActionGrammarBtn() {
-        showComponent("/Fxml/GrammarGui.fxml");
+    public void onActionBookmarkBtn() {
+        showComponent("/Bookmark/Bookmark.fxml");
     }
 
 }

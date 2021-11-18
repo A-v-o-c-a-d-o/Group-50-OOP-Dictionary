@@ -1,4 +1,4 @@
-package Controllers;
+package Bookmark;
 
 import DictionaryCMD.DictionaryManagement;
 import DictionaryCMD.Word;
@@ -11,7 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
