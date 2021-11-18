@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -81,7 +83,11 @@ public class Search implements Initializable {
         }
     }
 
-    public void bookmark(ActionEvent actionEvent) {
+    public void bookmark(ActionEvent actionEvent) throws IOException, SQLException {
+        Word selectedWord = results.getSelectionModel().getSelectedItem();
+        if (selectedWord != null) {
+            DictionaryManagement.addToBookmark(selectedWord);
+        }
     }
 
     public void speaker(ActionEvent actionEvent) {

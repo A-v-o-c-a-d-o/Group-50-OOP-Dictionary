@@ -14,7 +14,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("./Home/Home.fxml"));
-            primaryStage.setScene(new Scene(root));
+            Scene scene = new Scene(root);
+            String css = this.getClass().getResource("GUI.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
             System.out.println(e.getMessage());

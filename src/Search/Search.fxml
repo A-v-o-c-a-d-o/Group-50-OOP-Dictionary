@@ -25,7 +25,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/outline_edit_white_24dp.png" />
+                        <Image url="@../../lib/icons/outline_edit_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -34,7 +34,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/outline_delete_white_24dp.png" />
+                        <Image url="@../../lib/icons/outline_delete_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -43,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/outline_bookmark_white_24dp.png" />
+                        <Image url="@../../lib/icons/outline_bookmark_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -52,7 +52,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icon/outline_volume_up_white_24dp.png" />
+                        <Image url="@../../lib/icons/outline_volume_up_white_24dp.png" />
                      </image>
                   </ImageView>
                </graphic>
