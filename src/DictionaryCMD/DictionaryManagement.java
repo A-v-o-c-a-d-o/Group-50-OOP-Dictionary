@@ -97,6 +97,7 @@ public class DictionaryManagement {
 
     public static ObservableList<Word> searchFromDatabase(String wordToFind) throws SQLException {
         ObservableList<Word> ans = FXCollections.observableArrayList();
+        wordToFind = wordToFind.replace("'", " ");
         
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
