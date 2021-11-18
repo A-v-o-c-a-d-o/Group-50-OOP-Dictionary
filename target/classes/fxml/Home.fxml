@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: #E8E8E8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Home">
+   <children>
+      <AnchorPane fx:id="container" layoutX="120.0" prefHeight="700.0" prefWidth="1057.0" style="-fx-background-color: #E8E8E8;" />
+      <ToggleButton layoutX="31.0" layoutY="480.0" mnemonicParsing="false" onAction="#translateButton" style="-fx-background-color: #E8E8E8;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/outline_translate_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
+      <ToggleButton layoutX="31.0" layoutY="241.0" mnemonicParsing="false" onAction="#addButton" style="-fx-background-color: #E8E8E8;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/outline_add_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
+      <ToggleButton layoutX="31.0" layoutY="347.0" mnemonicParsing="false" onAction="#bookmarkButton" style="-fx-background-color: #E8E8E8;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/outline_bookmark_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
+      <ToggleButton layoutX="31.0" layoutY="125.0" mnemonicParsing="false" onAction="#searchButton" style="-fx-background-color: #E8E8E8;">
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icon/outline_search_white_24dp.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
+   </children>
+</AnchorPane>
