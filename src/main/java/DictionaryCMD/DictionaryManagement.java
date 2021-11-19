@@ -98,7 +98,7 @@ public class DictionaryManagement {
         connection = DriverManager.getConnection("jdbc:sqlite:./src/main/resources/db/dict_hh.db");
         statement = connection.createStatement();
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY word limit 100";
             ResultSet a = statement.executeQuery(sql);
 
             while(a.next()) {
@@ -135,7 +135,7 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         boolean ans = false;
         try {
-            String sql = "SELECT * FROM av WHERE word = " + "'" + wordToCheck + "%'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word = " + "'" + wordToCheck + "'" + " ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             ans = a.getInt(1) > 0;
             a.close();
