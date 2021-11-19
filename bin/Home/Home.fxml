@@ -34,7 +34,7 @@
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" styleClass="imageView">
                <image>
-                  <Image url="@../../lib/icons/outline_star_black_24dp.png" />
+                  <Image url="@../../lib/icons/star.png" />
                </image>
             </ImageView>
          </graphic>
