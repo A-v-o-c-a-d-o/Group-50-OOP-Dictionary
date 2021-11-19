@@ -99,7 +99,7 @@ public class DictionaryManagement {
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY LENGTH(word)";
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " ORDER BY LENGTH(word) LIMIT 100";
             ResultSet a = statement.executeQuery(sql);
             
             while(a.next()) {
