@@ -90,3 +90,11 @@
 .button {
     -fx-background-color: #8c51eb;
 }
+
+.text-area {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-padding: 6px;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: rgb(243, 29, 78);
+}

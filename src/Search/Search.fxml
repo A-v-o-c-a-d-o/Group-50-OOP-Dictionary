@@ -17,14 +17,14 @@
          <children>
             <TextField fx:id="searchField" onKeyReleased="#onActionSearchButton" prefHeight="44.0" prefWidth="178.0" promptText="Search">
                <font>
-                  <Font size="16.0" />
+                  <Font size="18.0" />
                </font></TextField>
             <ListView fx:id="results" layoutY="53.0" onMouseClicked="#onMouseClickListView" prefHeight="345.0" prefWidth="178.0" />
          </children>
       </AnchorPane>
       <TextArea fx:id="definition" layoutX="205.0" layoutY="68.0" prefHeight="313.0" prefWidth="485.0">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font></TextArea>
       <AnchorPane fx:id="editTab" layoutX="265.0" layoutY="171.0" prefHeight="210.0" prefWidth="260.0" styleClass="Label">
          <children>
