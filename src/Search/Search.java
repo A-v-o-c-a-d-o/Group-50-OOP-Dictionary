@@ -13,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -35,12 +34,6 @@ public class Search implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        /* try {
-            list = DictionaryManagement.searchFromDatabase("bell");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        results.setItems(list); */
         editTab.setVisible(false);
     }
 

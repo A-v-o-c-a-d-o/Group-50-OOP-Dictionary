@@ -25,7 +25,6 @@ public class Home implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void onActionSearchBtn() {

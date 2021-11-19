@@ -12,7 +12,6 @@ import java.util.Scanner;
 import edu.princeton.cs.algs4.In;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
@@ -206,6 +205,32 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         try {
             String sql = "SELECT * FROM av WHERE bookmark = 1" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+            
+            while(a.next()) {
+                if (a.getString(3) == null)
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(4)), a.getString(5)));
+                else
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(3)), a.getString(5)));
+            }
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return ans;
+    }
+
+    public static ObservableList<Word> searchFromBookmark(String wordToFind) throws SQLException {
+        ObservableList<Word> ans = FXCollections.observableArrayList();
+        wordToFind = wordToFind.replace("'", " ");
+        
+        connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " and bookmark = 1 ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             
             while(a.next()) {
