@@ -44,19 +44,27 @@ public class Search implements Initializable {
         star.setVisible(false);
     }
 
-    public void onActionSearchButton(KeyEvent keyEvent) throws SQLException {
+    public void onActionSearchButton(KeyEvent keyEvent) {
+        try {
         list = DictionaryManagement.searchFromDatabase(searchField.getText().toLowerCase().trim());
         results.setItems(list);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void onMouseClickListView(MouseEvent mouseEvent) throws SQLException {
-        Word selectedWord = results.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            definition.setText(selectedWord.getWord_explain());
+        try {
+            Word selectedWord = results.getSelectionModel().getSelectedItem();
+            if (selectedWord != null) {
+                definition.setText(selectedWord.getWord_explain());
+            }
+            if (DictionaryManagement.includeBM(selectedWord.getWord_target())) star.setVisible(true);
+            else star.setVisible(false);
+            pronounce.setText(selectedWord.getWord_phonetics());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        if (DictionaryManagement.includeBM(selectedWord.getWord_target())) star.setVisible(true);
-        else star.setVisible(false);
-        pronounce.setText(selectedWord.getWord_phonetics());
     }
 
     public void edit(ActionEvent actionEvent) {
