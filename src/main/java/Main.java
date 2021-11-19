@@ -18,6 +18,8 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/fxml/Home.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
+            String css = this.getClass().getResource("/GUI.css").toExternalForm();
+            scene.getStylesheets().add(css);
             stage.setTitle("Dictionary");
             stage.setScene(scene);
             stage.show();

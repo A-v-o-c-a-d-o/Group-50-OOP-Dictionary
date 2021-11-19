@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -21,6 +22,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Search implements Initializable {
+    @FXML
+    private Label pronounce;
     @FXML
     private ImageView star;
     @FXML
@@ -60,6 +63,7 @@ public class Search implements Initializable {
         }
         if (DictionaryManagement.includeBM(selectedWord.getWord_target())) star.setVisible(true);
         else star.setVisible(false);
+        pronounce.setText(selectedWord.getWord_phonetics());
     }
 
     public void edit(ActionEvent actionEvent) {

@@ -46,12 +46,12 @@ public class Translate implements Initializable {
 
     public void swapEnVi(MouseEvent mouseEvent) {
         if (langTarget.compareTo("vi") == 0) {
-            rightFlag.setLayoutX(618);
-            leftFlag.setLayoutX(100);
+            rightFlag.setLayoutX(399);
+            leftFlag.setLayoutX(60);
             langTarget = "en";
         } else {
-            rightFlag.setLayoutX(100);
-            leftFlag.setLayoutX(618);
+            rightFlag.setLayoutX(60);
+            leftFlag.setLayoutX(399);
             langTarget = "vi";
         }
         target.clear();

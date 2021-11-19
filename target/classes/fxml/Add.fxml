@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="700.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Add">
+<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Add">
    <children>
-      <TextField fx:id="addTarget" layoutX="43.0" layoutY="58.0" prefHeight="50.0" prefWidth="547.0" promptText="Write your English word">
+      <TextField fx:id="addTarget" layoutX="21.0" layoutY="137.0" prefHeight="50.0" prefWidth="257.0" promptText="Write your English word">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
-      <TextArea fx:id="addExplain" layoutX="43.0" layoutY="243.0" prefHeight="314.0" prefWidth="547.0" promptText="Write your Vietnamese meaning" wrapText="true">
+      <TextArea fx:id="addExplain" layoutX="21.0" layoutY="212.0" prefHeight="235.0" prefWidth="360.0" promptText="Write your Vietnamese meaning" wrapText="true">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextArea>
-      <TextField fx:id="addPhonetic" layoutX="653.0" layoutY="58.0" prefHeight="50.0" prefWidth="380.0" promptText="Write the phonetic">
+      <TextField fx:id="addPhonetic" layoutX="450.0" layoutY="137.0" prefHeight="50.0" prefWidth="174.0" promptText="Write the phonetic">
          <font>
-            <Font size="16.0" />
+            <Font size="14.0" />
          </font>
       </TextField>
-      <Button layoutX="792.0" layoutY="576.0" mnemonicParsing="false" onAction="#save" prefHeight="77.0" prefWidth="180.0" text="Save">
+      <Button layoutX="562.0" layoutY="395.0" mnemonicParsing="false" onAction="#save" prefHeight="60.0" prefWidth="95.0" text="Save">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" layoutX="39.0" layoutY="14.0" prefHeight="50.0" prefWidth="623.0" style="-fx-background-color: #FF0000;" text="ADD" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="canAdd" fitHeight="48.0" fitWidth="48.0" layoutX="513.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/check.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cantAdd" fitHeight="48.0" fitWidth="48.0" layoutX="513.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../icon/close.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

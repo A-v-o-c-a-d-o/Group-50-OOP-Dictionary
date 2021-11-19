@@ -7,12 +7,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Add implements Initializable {
+    @FXML
+    private ImageView canAdd;
+    @FXML
+    private ImageView cantAdd;
     @FXML
     private TextField addTarget;
     @FXML
@@ -30,6 +35,11 @@ public class Add implements Initializable {
             selectedWord.setWord_explain(explain);
             selectedWord.setWord_phonetics(pronounce);
             DictionaryManagement.insertToDatabase(selectedWord);
+            canAdd.setVisible(true);
+            cantAdd.setVisible(false);
+        } else {
+            cantAdd.setVisible(true);
+            canAdd.setVisible(false);
         }
         addTarget.clear();
         addExplain.clear();
@@ -38,5 +48,7 @@ public class Add implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        canAdd.setVisible(false);
+        cantAdd.setVisible(false);
     }
 }

@@ -135,7 +135,7 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         boolean ans = false;
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word = " + "'" + wordToCheck + "%'" + " ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             ans = a.getInt(1) > 0;
             a.close();
@@ -152,7 +152,7 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         boolean ans = false;
         try {
-            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToCheck + "'" + " ORDER BY word";
+            String sql = "SELECT * FROM av WHERE word = " + "'" + wordToCheck + "'" + " ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
             if (a.getInt(1) > 0)
                 ans = a.getInt(6) == 1;
@@ -204,6 +204,32 @@ public class DictionaryManagement {
         statement = connection.createStatement();
         try {
             String sql = "SELECT * FROM av WHERE bookmark = 1" + " ORDER BY word";
+            ResultSet a = statement.executeQuery(sql);
+
+            while(a.next()) {
+                if (a.getString(3) == null)
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(4)), a.getString(5)));
+                else
+                    ans.add(new Word(a.getString(2), parseHTMLContent(a.getString(3)), a.getString(5)));
+            }
+            a.close();
+            connection.close();
+            statement.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return ans;
+    }
+
+    public static ObservableList<Word> searchFromBookmark(String wordToFind) throws SQLException {
+        ObservableList<Word> ans = FXCollections.observableArrayList();
+        wordToFind = wordToFind.replace("'", " ");
+
+        connection = DriverManager.getConnection("jdbc:sqlite:./src/main/resources/db/dict_hh.db");
+        statement = connection.createStatement();
+        try {
+            String sql = "SELECT * FROM av WHERE word like " + "'" + wordToFind + "%'" + " and bookmark = 1 ORDER BY word";
             ResultSet a = statement.executeQuery(sql);
 
             while(a.next()) {

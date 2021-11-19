@@ -1,0 +1,100 @@
+* {
+    -fx-background-radius: 10px;
+}
+
+.root {
+    -fx-background-radius: 0;
+    -fx-background-color: #e07d7d;
+}
+
+.button:hover {
+    -fx-cursor: hand;
+}
+
+.button:hover .imageView {
+    -fx-scale-x: 1.3;
+    -fx-scale-y: 1.3;
+}
+
+.transparentBtn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.transparentBtn:hover .imageView {
+    -fx-scale-x: 1.3;
+    -fx-scale-y: 1.3;
+}
+
+.transparentBtn:selected {
+    -fx-border-color: #ffffff;
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 0 8px;
+}
+
+
+.Label {
+    -fx-text-fill: #e06c6c;
+    -fx-background-radius: 2px;
+    -fx-background-color: linear-gradient(to bottom left, #95f5f0, #49d5c9);
+}
+
+.labelWhite {
+    -fx-background-color: rgb(46, 255, 5);
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+#SearchGuiTextArea {
+    -fx-background-radius: 0 8px 8px 8px;
+}
+
+.list-cell {
+    -fx-background-radius: 6px;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+    -fx-padding: 6px;
+}
+
+.list-cell:hover {
+    -fx-background-color: #a2a4fd;
+    -fx-cursor: hand;
+}
+
+.list-cell:filled:selected {
+    -fx-background-color: linear-gradient(to bottom left, #95f5f0, #49d5c9);
+    -fx-text-fill: rgb(241, 24, 24);
+}
+
+.primaryBtn {
+    -fx-background-radius: 10px;
+    -fx-background-color: linear-gradient(to bottom left, #95f5f0, #49d5c9);
+    -fx-text-fill: rgb(81, 131, 66);
+}
+
+.XBtn:hover {
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
+    -fx-cursor: hand;
+}
+
+.swapEnVn:hover {
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+    -fx-cursor: hand;
+}
+
+.confirmBtn:hover {
+    -fx-text-fill: #2528ef;
+}
+
+.button {
+    -fx-background-color: #8c51eb;
+}
+
+.text-area {
+    -fx-font-size: 22px;
+    -fx-font-weight: 700;
+    -fx-padding: 6px;
+    -fx-font-family: "Calibri Light";
+    -fx-text-fill: rgb(24, 223, 241);
+}
