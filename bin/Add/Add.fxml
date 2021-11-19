@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Add">
+<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Add.Add">
    <children>
       <TextField fx:id="addTarget" layoutX="21.0" layoutY="137.0" prefHeight="50.0" prefWidth="257.0" promptText="Write your English word">
          <font>
@@ -38,12 +38,12 @@
       </Label>
       <ImageView fx:id="canAdd" fitHeight="48.0" fitWidth="48.0" layoutX="513.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/check.png" />
+            <Image url="@../../lib/icons/check.png" />
          </image>
       </ImageView>
       <ImageView fx:id="cantAdd" fitHeight="48.0" fitWidth="48.0" layoutX="513.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../icon/close.png" />
+            <Image url="@../../lib/icons/close.png" />
          </image>
       </ImageView>
    </children>

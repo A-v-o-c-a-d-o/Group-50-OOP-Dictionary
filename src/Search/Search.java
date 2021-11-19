@@ -15,7 +15,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -40,8 +39,12 @@ public class Search implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
         editTab.setVisible(false);
         star.setVisible(false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void onActionSearchButton(KeyEvent keyEvent) {
@@ -67,14 +70,14 @@ public class Search implements Initializable {
         }
     }
 
-    public void edit(ActionEvent actionEvent) {
+    public void edit(ActionEvent actionEvent) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             editTab.setVisible(true);
         }
     }
 
-    public void delete(ActionEvent actionEvent) throws SQLException {
+    public void delete(ActionEvent actionEvent) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             DictionaryManagement.deleteInDatabase(selectedWord);
@@ -92,7 +95,7 @@ public class Search implements Initializable {
         }
     }
 
-    public void bookmark(ActionEvent actionEvent) throws SQLException, IOException {
+    public void bookmark(ActionEvent actionEvent) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             if (DictionaryManagement.includeBM(selectedWord.getWord_target())) {
@@ -105,14 +108,14 @@ public class Search implements Initializable {
         }
     }
 
-    public void speaker(ActionEvent actionEvent) {
+    public void speaker(ActionEvent actionEvent) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             DictionaryManagement.speak(selectedWord);
         }
     }
 
-    public void confirm(ActionEvent actionEvent) throws SQLException {
+    public void confirm(ActionEvent actionEvent) throws Exception {
         String descriptionEdited = editTextField.getText().toLowerCase().trim();
 
         if (!descriptionEdited.equals("")) {
@@ -126,7 +129,7 @@ public class Search implements Initializable {
         }
     }
 
-    public void cancel(ActionEvent actionEvent) {
+    public void cancel(ActionEvent actionEvent) throws Exception {
         editTab.setVisible(false);
         editTextField.clear();
     }

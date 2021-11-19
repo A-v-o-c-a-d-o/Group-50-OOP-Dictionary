@@ -1,10 +1,7 @@
 package Bookmark;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import DictionaryCMD.DictionaryManagement;
 import DictionaryCMD.Word;
 import javafx.collections.FXCollections;
@@ -41,7 +38,7 @@ public class Bookmark {
     private ObservableList<Word> list = FXCollections.observableArrayList();
 
     @FXML
-    void onActionDeleteWord(ActionEvent event) throws IOException, SQLException {
+    void onActionDeleteWord(ActionEvent event) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             DictionaryManagement.deleteFromBookmark(selectedWord);
@@ -59,22 +56,22 @@ public class Bookmark {
     }
 
     @FXML
-    void onActionSearchBtn(KeyEvent event) throws SQLException {
+    void onActionSearchBtn(KeyEvent event) throws Exception {
         list = DictionaryManagement.searchFromBookmark(searchField.getText().toLowerCase().trim());
         results.setItems(list);
     }
 
     @FXML
-    public void onMouseClickListView(MouseEvent mouseEvent) {
+    public void onMouseClickListView(MouseEvent mouseEvent) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             definition.setText(selectedWord.getWord_explain());
-            pronounceWord.setText("    " + selectedWord.getWord_phonetics());
+            pronounceWord.setText(selectedWord.getWord_phonetics());
         }
     }
 
     @FXML
-    void onActionSpeakerBtn(ActionEvent event) {
+    void onActionSpeakerBtn(ActionEvent event) throws Exception {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             DictionaryManagement.speak(selectedWord);
@@ -90,80 +87,9 @@ public class Bookmark {
 
         try {
             list = DictionaryManagement.loadFromBookmark();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         results.setItems(list);
     }
-
 }
-
-
-/* import DictionaryCMD.DictionaryManagement;
-import DictionaryCMD.Word;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import java.io.IOException;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
-
-public class Bookmark implements Initializable {
-    @FXML
-    private TextField searchField;
-    @FXML
-    private ListView<Word> results;
-    @FXML
-    private TextArea definition;
-
-    private ObservableList<Word> list = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            list = DictionaryManagement.loadFromBookmark();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        results.setItems(list);
-    }
-
-    public void onMouseClickListView(MouseEvent mouseEvent) {
-        Word selectedWord = results.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            definition.setText(selectedWord.getWord_explain());
-        }
-    }
-
-    public void deleteMark(ActionEvent actionEvent) throws SQLException, IOException {
-        Word selectedWord = results.getSelectionModel().getSelectedItem();
-        if (selectedWord != null) {
-            DictionaryManagement.deleteFromBookmark(selectedWord);
-            int selectedIdx = results.getSelectionModel().getSelectedIndex();
-            int newSelectedIdx = (selectedIdx == results.getItems().size() - 1) ? selectedIdx - 1 : selectedIdx;
-            results.getItems().remove(selectedIdx);
-            results.getSelectionModel().select(newSelectedIdx);
-            if (newSelectedIdx != -1) {
-                selectedWord = results.getSelectionModel().getSelectedItem();
-                definition.setText(selectedWord.getWord_explain());
-            } else {
-                definition.clear();
-            }
-        }
-    }
-} */

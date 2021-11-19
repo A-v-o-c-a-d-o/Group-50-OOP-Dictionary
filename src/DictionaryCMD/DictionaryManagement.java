@@ -2,11 +2,9 @@ package DictionaryCMD;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 import edu.princeton.cs.algs4.In;
@@ -47,7 +45,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void UpdateDatabase(Word word) throws SQLException {
+    public static void UpdateDatabase(Word word) throws Exception {
         if (!DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -62,7 +60,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void deleteInDatabase(Word word) throws SQLException {
+    public static void deleteInDatabase(Word word) throws Exception {
         if (!DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -77,7 +75,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void insertToDatabase(Word word) throws SQLException {
+    public static void insertToDatabase(Word word) throws Exception {
         if (DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -94,7 +92,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static ObservableList<Word> searchFromDatabase(String wordToFind) throws SQLException {
+    public static ObservableList<Word> searchFromDatabase(String wordToFind) throws Exception {
         ObservableList<Word> ans = FXCollections.observableArrayList();
         wordToFind = wordToFind.replace("'", " ");
         
@@ -133,7 +131,7 @@ public class DictionaryManagement {
         return result;
     }
 
-    public static boolean includeDB(String wordToCheck) throws SQLException {
+    public static boolean includeDB(String wordToCheck) throws Exception {
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
         boolean ans = false;
@@ -150,7 +148,7 @@ public class DictionaryManagement {
         return ans;
     }
 
-    public static boolean includeBM(String wordToCheck) throws SQLException {
+    public static boolean includeBM(String wordToCheck) throws Exception {
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
         statement = connection.createStatement();
         boolean ans = false;
@@ -168,7 +166,7 @@ public class DictionaryManagement {
         return ans;
     }
 
-    public static void addToBookmark(Word word) throws IOException, SQLException {
+    public static void addToBookmark(Word word) throws Exception {
         if (DictionaryManagement.includeBM(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -183,7 +181,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void deleteFromBookmark(Word word) throws IOException, SQLException {
+    public static void deleteFromBookmark(Word word) throws Exception {
         if (!DictionaryManagement.includeDB(word.getWord_target()))
             return;
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -198,7 +196,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static ObservableList<Word> loadFromBookmark() throws IOException, ClassNotFoundException, SQLException {
+    public static ObservableList<Word> loadFromBookmark() throws Exception {
         ObservableList<Word> ans = FXCollections.observableArrayList();
         
         connection = DriverManager.getConnection("jdbc:sqlite:./lib/dict_hh.db");
@@ -223,7 +221,7 @@ public class DictionaryManagement {
         return ans;
     }
 
-    public static ObservableList<Word> searchFromBookmark(String wordToFind) throws SQLException {
+    public static ObservableList<Word> searchFromBookmark(String wordToFind) throws Exception {
         ObservableList<Word> ans = FXCollections.observableArrayList();
         wordToFind = wordToFind.replace("'", " ");
         
@@ -272,7 +270,7 @@ public class DictionaryManagement {
         System.out.println("We can not find your word!");
     }
 
-    public void dictionaryExportToFile() throws IOException {
+    public void dictionaryExportToFile() throws Exception {
         FileWriter writer = new FileWriter(new File("D:\\Study\\Dictionary\\src\\outPut.txt"));
         for (Word i: dictionary) {
             writer.write(i.getWord_target() + "\t" + i.getWord_explain() + "\n");

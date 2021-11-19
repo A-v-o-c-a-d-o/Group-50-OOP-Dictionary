@@ -1,4 +1,4 @@
-package Controllers;
+package Add;
 
 import DictionaryCMD.DictionaryManagement;
 import DictionaryCMD.Word;
@@ -8,9 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Add implements Initializable {
@@ -25,7 +23,7 @@ public class Add implements Initializable {
     @FXML
     private TextField addPhonetic;
 
-    public void save(ActionEvent actionEvent) throws SQLException {
+    public void save(ActionEvent actionEvent) throws Exception {
         String target = addTarget.getText().toLowerCase().trim();
         String explain = addExplain.getText().toLowerCase().trim();
         String pronounce = addPhonetic.getText().toLowerCase().trim();

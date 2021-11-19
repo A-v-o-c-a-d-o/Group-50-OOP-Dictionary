@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -22,25 +21,24 @@ public class Home implements Initializable {
             AnchorPane component = FXMLLoader.load(getClass().getResource(path));
             container.getChildren().clear();
             container.getChildren().add(component);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void onActionSearchBtn() {
+    public void onActionSearchBtn() throws Exception {
         showComponent("/Search/Search.fxml");
     }
 
-    public void onActionAddBtn() {
+    public void onActionAddBtn() throws Exception {
         showComponent("/Add/Add.fxml");
     }
 
-    public void onActionTranslateBtn() {
+    public void onActionTranslateBtn() throws Exception {
         showComponent("/TranslateAPI/Translate.fxml");
     }
 
-    public void onActionBookmarkBtn() {
+    public void onActionBookmarkBtn() throws Exception {
         showComponent("/Bookmark/Bookmark.fxml");
     }
-
 }

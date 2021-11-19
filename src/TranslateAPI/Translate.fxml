@@ -41,21 +41,21 @@
                   </Pane>
                   <Pane fx:id="leftFlag" layoutX="399.0" layoutY="3.0" prefHeight="60.0" prefWidth="242.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="60.0" prefHeight="60.0" prefWidth="160.0" text="Vietnamese" textFill="WHITE">
+                        <Label alignment="CENTER" layoutX="82.0" prefHeight="60.0" prefWidth="160.0" text="Vietnamese" textFill="WHITE">
                            <font>
                               <Font name="System Bold Italic" size="24.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../lib/icons/vietnam.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="350.0" layoutY="17.0" onMouseClicked="#swapEnVi" pickOnBounds="true" preserveRatio="true" styleClass="swapEnVn">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="342.0" layoutY="17.0" onMouseClicked="#swapEnVi" pickOnBounds="true" preserveRatio="true" styleClass="swapEnVn">
                      <image>
-                        <Image url="@../../../../../../DictionaryProject-master/DictionaryProject-master/src/main/resources/icons/doubleArrows.png" />
+                        <Image url="@../../lib/icons/doubleArrows.png" />
                      </image>
                   </ImageView>
                </children>

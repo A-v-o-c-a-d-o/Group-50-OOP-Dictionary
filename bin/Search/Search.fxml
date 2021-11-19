@@ -52,7 +52,7 @@
       </Label>
       <Pane layoutX="205.0" layoutY="394.0" prefHeight="73.0" prefWidth="485.0" style="-fx-background-color: #E8E8E8;">
          <children>
-            <Button layoutX="191.0" layoutY="15.0" mnemonicParsing="false" onAction="#edit" prefHeight="24.0" prefWidth="40.0">
+            <Button layoutX="233.0" layoutY="15.0" mnemonicParsing="false" onAction="#edit" prefHeight="24.0" prefWidth="40.0">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -61,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="260.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete">
+            <Button layoutX="294.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="334.0" layoutY="15.0" mnemonicParsing="false" onAction="#bookmark">
+            <Button layoutX="356.0" layoutY="15.0" mnemonicParsing="false" onAction="#bookmark">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -79,7 +79,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="409.0" layoutY="15.0" mnemonicParsing="false" onAction="#speaker">
+            <Button layoutX="420.0" layoutY="15.0" mnemonicParsing="false" onAction="#speaker">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,7 +88,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="pronounce" alignment="CENTER" layoutX="7.0" layoutY="7.0" prefHeight="58.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF;">
+            <Label fx:id="pronounce" alignment="CENTER" layoutX="7.0" layoutY="7.0" prefHeight="58.0" prefWidth="202.0" style="-fx-background-color: #FFFFFF;">
                <font>
                   <Font size="18.0" />
                </font>

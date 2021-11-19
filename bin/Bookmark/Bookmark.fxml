@@ -26,7 +26,7 @@
          <font>
             <Font size="18.0" />
          </font></TextArea>
-      <Label fx:id="pronounceWord" layoutX="339.0" layoutY="409.0" prefHeight="42.0" prefWidth="175.0" style="-fx-background-color: #FFFFFF;">
+      <Label fx:id="pronounceWord" alignment="CENTER" layoutX="339.0" layoutY="409.0" prefHeight="42.0" prefWidth="175.0" style="-fx-background-color: #FFFFFF;">
          <font>
             <Font size="18.0" />
          </font></Label>
