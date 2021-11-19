@@ -11,17 +11,48 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1057.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Search.Search">
+<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Search.Search">
    <children>
-      <AnchorPane prefHeight="707.0" prefWidth="245.0">
+      <AnchorPane layoutX="15.0" layoutY="68.0" prefHeight="397.0" prefWidth="190.0">
          <children>
-            <TextField fx:id="searchField" layoutY="1.0" onKeyReleased="#onActionSearchButton" prefHeight="52.0" prefWidth="245.0" promptText="Search" />
-            <ListView fx:id="results" layoutY="52.0" onMouseClicked="#onMouseClickListView" prefHeight="655.0" prefWidth="245.0" />
+            <TextField fx:id="searchField" onKeyReleased="#onActionSearchButton" prefHeight="44.0" prefWidth="178.0" promptText="Search">
+               <font>
+                  <Font size="16.0" />
+               </font></TextField>
+            <ListView fx:id="results" layoutY="53.0" onMouseClicked="#onMouseClickListView" prefHeight="345.0" prefWidth="178.0" />
          </children>
       </AnchorPane>
-      <Pane layoutX="244.0" prefHeight="82.0" prefWidth="882.0" style="-fx-background-color: #75e36b;">
+      <TextArea fx:id="definition" layoutX="205.0" layoutY="68.0" prefHeight="313.0" prefWidth="485.0">
+         <font>
+            <Font size="14.0" />
+         </font></TextArea>
+      <AnchorPane fx:id="editTab" layoutX="265.0" layoutY="171.0" prefHeight="210.0" prefWidth="260.0" styleClass="Label">
          <children>
-            <Button layoutX="161.0" layoutY="19.0" mnemonicParsing="false" onAction="#edit" textFill="#4c78ef">
+            <TextArea fx:id="editTextField" layoutX="29.0" layoutY="14.0" prefHeight="130.0" prefWidth="202.0" promptText="Write your new explain" wrapText="true" AnchorPane.leftAnchor="29.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Button alignment="CENTER" layoutX="130.0" layoutY="152.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="72.0" text="Confirm" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="58.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="40.0" layoutY="151.0" mnemonicParsing="false" onAction="#cancel" prefHeight="31.0" prefWidth="64.0" text="Cancel">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER" layoutX="15.0" layoutY="10.0" prefHeight="44.0" prefWidth="675.0" style="-fx-background-color: #FF0000;" text="SEARCH" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Pane layoutX="205.0" layoutY="394.0" prefHeight="73.0" prefWidth="485.0" style="-fx-background-color: #E8E8E8;">
+         <children>
+            <Button layoutX="191.0" layoutY="15.0" mnemonicParsing="false" onAction="#edit" prefHeight="24.0" prefWidth="40.0">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,7 +61,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="292.0" layoutY="19.0" mnemonicParsing="false" onAction="#delete">
+            <Button layoutX="260.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +70,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="430.0" layoutY="19.0" mnemonicParsing="false" onAction="#bookmark">
+            <Button layoutX="334.0" layoutY="15.0" mnemonicParsing="false" onAction="#bookmark">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,7 +79,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="577.0" layoutY="19.0" mnemonicParsing="false" onAction="#speaker">
+            <Button layoutX="409.0" layoutY="15.0" mnemonicParsing="false" onAction="#speaker">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,32 +88,17 @@
                   </ImageView>
                </graphic>
             </Button>
-         </children>
-      </Pane>
-      <TextArea fx:id="definition" layoutX="245.0" layoutY="82.0" prefHeight="628.0" prefWidth="882.0" />
-      <AnchorPane fx:id="editTab" layoutX="268.0" layoutY="95.0" prefHeight="460.0" prefWidth="418.0" styleClass="Label">
-         <children>
-            <TextArea fx:id="editTextField" layoutX="41.0" layoutY="55.0" prefHeight="332.0" prefWidth="327.0" promptText="Write your new explain" wrapText="true" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="55.0">
+            <Label fx:id="pronounce" alignment="CENTER" layoutX="7.0" layoutY="7.0" prefHeight="58.0" prefWidth="178.0" style="-fx-background-color: #FFFFFF;">
                <font>
-                  <Font size="15.0" />
-               </font>
-            </TextArea>
-            <Label fx:id="editTabLabel" alignment="CENTER" layoutX="45.0" layoutY="15.0" prefHeight="35.0" prefWidth="270.0" AnchorPane.topAnchor="15.0">
-               <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font size="18.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" layoutX="284.0" layoutY="437.0" mnemonicParsing="false" onAction="#confirm" prefHeight="30.0" prefWidth="80.0" text="Confirm" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="15.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="226.0" layoutY="409.0" mnemonicParsing="false" onAction="#cancel" prefHeight="35.0" prefWidth="64.0" text="Cancel">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
          </children>
-      </AnchorPane>
+      </Pane>
+      <ImageView fx:id="star" fitHeight="36.0" fitWidth="36.0" layoutX="620.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../lib/icons/outline_star_black_24dp.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

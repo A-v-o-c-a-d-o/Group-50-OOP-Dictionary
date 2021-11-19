@@ -1,7 +1,7 @@
 package Add;
 
-import DictionaryCMD.Word;
 import DictionaryCMD.DictionaryManagement;
+import DictionaryCMD.Word;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +23,8 @@ public class Add implements Initializable {
         String target = addTarget.getText().toLowerCase().trim();
         String explain = addExplain.getText().toLowerCase().trim();
         String pronounce = addPhonetic.getText().toLowerCase().trim();
-        if (!target.equals("") && !explain.equals("")) {
+
+        if (!target.equals("") && !explain.equals("") && !DictionaryManagement.includeDB(target)) {
             Word selectedWord = new Word();
             selectedWord.setWord_target(target);
             selectedWord.setWord_explain(explain);
@@ -33,8 +34,10 @@ public class Add implements Initializable {
         addTarget.clear();
         addExplain.clear();
         addPhonetic.clear();
+
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 }

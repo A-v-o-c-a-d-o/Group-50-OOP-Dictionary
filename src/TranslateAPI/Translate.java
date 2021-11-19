@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +24,8 @@ public class Translate implements Initializable {
     private String langTarget = "vi";
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {}
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
     public String ggTranslate(String targetLanguage, String text) {
         String translatedTarget = null;
@@ -44,12 +46,12 @@ public class Translate implements Initializable {
 
     public void swapEnVi(MouseEvent mouseEvent) {
         if (langTarget.compareTo("vi") == 0) {
-            rightFlag.setLayoutX(618);
-            leftFlag.setLayoutX(100);
+            rightFlag.setLayoutX(399);
+            leftFlag.setLayoutX(60);
             langTarget = "en";
         } else {
-            rightFlag.setLayoutX(100);
-            leftFlag.setLayoutX(618);
+            rightFlag.setLayoutX(60);
+            leftFlag.setLayoutX(399);
             langTarget = "vi";
         }
         target.clear();

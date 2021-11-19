@@ -69,6 +69,7 @@ public class Bookmark {
         Word selectedWord = results.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             definition.setText(selectedWord.getWord_explain());
+            pronounceWord.setText("    " + selectedWord.getWord_phonetics());
         }
     }
 

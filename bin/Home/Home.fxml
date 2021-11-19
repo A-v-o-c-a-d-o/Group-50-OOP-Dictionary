@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="788.0" style="-fx-background-color: #4c8cbe;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Home">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="484.0" prefWidth="788.0" style="-fx-background-color: #C65555;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Home.Home">
    <children>
       <ToggleButton layoutX="14.0" layoutY="61.0" mnemonicParsing="false" onAction="#onActionSearchBtn" prefHeight="50.0" prefWidth="50.0" selected="true" styleClass="transparentBtn" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="61.0">
          <graphic>
@@ -47,6 +47,6 @@
             </ImageView>
          </graphic>
       </ToggleButton>
-      <AnchorPane fx:id="container" layoutX="82.0" layoutY="2.0" prefHeight="480.0" prefWidth="700.0" />
+      <AnchorPane fx:id="container" layoutX="82.0" layoutY="2.0" prefHeight="480.0" prefWidth="700.0" style="-fx-background-color: #AA0000;" />
    </children>
 </AnchorPane>
