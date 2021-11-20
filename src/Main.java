@@ -15,6 +15,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         String css = this.getClass().getResource("GUI.css").toExternalForm();
         scene.getStylesheets().add(css);
+        primaryStage.setTitle("Dictionary");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
